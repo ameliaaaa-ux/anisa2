@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #324D3E;
+  --color-primary-soft: #8EA48B;
+  --color-accent: #728A6E;
+  --color-bg-light: #D9E4D7;
+  --color-bg-medium: #BECFBB;
+  --color-bg-dark: #2B4336;
+  --color-text-dark: #1F2D27;
+  --color-text-muted: #4A5F55;
+  --color-footer: #2B4336;
+  
+  --font-sans: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", serif;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-light text-text-dark leading-[1.6] transition-colors duration-300 font-sans;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  }
+
+  .dark body {
+    @apply bg-gray-950 text-gray-100;
+  }
+}
+
+@layer components {
+  .card-standard {
+    @apply bg-white dark:bg-gray-900 rounded-[15px] shadow-sm p-8 border border-gray-200 dark:border-gray-800 transition-all duration-300;
+  }
+  
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-soft text-white px-6 py-2 rounded-full font-bold transition-all duration-200 active:scale-95 shadow-md;
+  }
+
+  .text-important {
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+}

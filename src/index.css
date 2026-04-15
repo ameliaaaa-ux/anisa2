@@ -1,46 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #324D3E;
-  --color-primary-soft: #8EA48B;
-  --color-accent: #728A6E;
-  --color-bg-light: #D9E4D7;
-  --color-bg-medium: #BECFBB;
-  --color-bg-dark: #2B4336;
-  --color-text-dark: #1F2D27;
-  --color-text-muted: #4A5F55;
-  --color-footer: #2B4336;
+  --color-primary: #22C55E; /* Bright Green Accent */
+  --color-primary-soft: #4ADE80;
+  --color-accent: #8BA888; /* Calm Sage */
+  --color-bg-dark: #0D130D; /* Deep Forest Black */
+  --color-bg-card: #161D16; /* Dark Card Green */
+  --color-bg-light: #F0F4F0; /* Soft Off-white for light mode fallback */
+  --color-text-main: #E2E8E2; /* Calm Light Grey/White */
+  --color-text-heading: #FFFFFF; /* Pure White for Headings */
+  --color-footer: #080C08;
   
-  --font-sans: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Playfair Display", serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", serif;
 }
 
 @layer base {
   body {
-    @apply bg-bg-light text-text-dark leading-[1.6] transition-colors duration-300 font-sans;
+    @apply bg-bg-dark text-text-main leading-[1.8] transition-colors duration-300 font-sans font-medium;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-bold tracking-tight;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    @apply font-display font-bold tracking-tight text-text-heading;
   }
 
-  .dark body {
-    @apply bg-gray-950 text-gray-100;
+  .light body {
+    @apply bg-bg-light text-gray-900;
   }
 }
 
 @layer components {
   .card-standard {
-    @apply bg-white dark:bg-gray-900 rounded-[15px] shadow-sm p-8 border border-gray-200 dark:border-gray-800 transition-all duration-300;
+    @apply bg-bg-card rounded-[32px] shadow-[0_4px_30px_rgba(0,0,0,0.2)] p-8 border border-white/5 transition-all duration-300;
+  }
+
+  .card-interactive {
+    @apply hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] hover:-translate-y-1 hover:border-primary/30 cursor-pointer;
   }
   
   .btn-primary {
-    @apply bg-primary hover:bg-primary-soft text-white px-6 py-2 rounded-full font-bold transition-all duration-200 active:scale-95 shadow-md;
+    @apply bg-primary hover:bg-primary-soft text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 active:scale-95 shadow-[0_10px_20px_-10px_rgba(34,197,94,0.5)] hover:shadow-[0_15px_30px_-10px_rgba(34,197,94,0.6)];
   }
 
   .text-important {
-    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    @apply font-extrabold text-text-heading;
   }
 }
